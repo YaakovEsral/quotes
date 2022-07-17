@@ -26,26 +26,26 @@ function toggleFullScreen() {
 
 let divIndex = 0;
 async function animate() {
+    // before starting anything. sometimes while loop malfunctions without this
     await sleep(1000);
 
     const numberOfTransitions = randomNumber(3, 5, true);
-    for (let i = 1; i <= numberOfTransitions; i++) {
+    for (let i = 0; i <= allQuoteDivs.length; i++) {
         // start over if it's the last one
-        if(i === numberOfTransitions) {
-            animate();
-        }
+        // if(i === numberOfTransitions) {
+        //     const interval = randomNumber(2000, 4000);
+        //     setTimeout(animate, interval);
+        // }
 
         if (animationActive) {
             const quote = getQuoteText();
-            // console.log('new quote', quote);
-            // console.log('placing quote');
-            
             placeQuoteDiv(divIndex, quote);
             divIndex++;
             if(divIndex === allQuoteDivs.length) {
                 divIndex = 0;
             }
-            await sleep(200);
+            // after placing quote
+            // await sleep(200);
         } else {
             console.log('ending animation');
             break;
@@ -69,7 +69,8 @@ async function placeQuoteDiv(index, quote) {
     let overlap = true;
     let counter = 0;
     const currentDiv = allQuoteDivs[index];
-    hide(currentDiv);
+    // hide(currentDiv);
+    // set text
     const quoteText = currentDiv.children[0];
     const authorText = currentDiv.children[1];
     quoteText.innerText = quote.text;
@@ -81,6 +82,7 @@ async function placeQuoteDiv(index, quote) {
     while (overlap) {
         if (counter++ > 1000) {
             console.log('COUNTER OVERLOAD');
+            removeAllDivs();
             break;
         }
         console.log('searching for available space');
@@ -95,13 +97,22 @@ async function placeQuoteDiv(index, quote) {
 
         currentDiv.style.left = `${left}px`;
         currentDiv.style.top = `${top}px`;
+        // used this for testing - each new placement attempt
         // await sleep(1000)
 
         // check that this div doesn't overlap with a different one
         overlap = checkOverlap(currentDiv, allQuoteDivs);
         // console.log('overlap', overlap);
 
-        show(currentDiv);
+        
     }
+    show(currentDiv);
+}
 
+function removeAllDivs() {
+    console.log('removing divs');
+    allQuoteDivs.forEach(div => {
+        div.style.left = '-100%';
+        div.style.top = '-100%';
+    })
 }

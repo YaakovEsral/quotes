@@ -21,6 +21,7 @@ div#quotes-display:fullscreen {
     width: 200px;
     position: absolute;
     /* border: 2px solid black; */
+    /* transition: 0.2s; */
 }
 
 #main-quote {
@@ -56,5 +57,5 @@ div#quotes-display:fullscreen {
 }
 
 .hidden {
-    opacity: 0;
+    /* opacity: 0; */
 }
