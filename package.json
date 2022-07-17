@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "nodemon ./bin/www",
+    "ui": "browser-sync start --config bs-config.js"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -16,6 +17,7 @@
   },
   "devDependencies": {
     "browser-sync": "^2.27.10",
+    "dotenv": "^16.0.1",
     "nodemon": "^2.0.19"
   }
 }
