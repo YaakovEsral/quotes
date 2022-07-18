@@ -73,14 +73,14 @@ async function placeQuoteDiv(index, quote) {
     let overlap = true;
     let counter = 0;
     const currentDiv = allQuoteDivs[index];
-    // hide(currentDiv);
+    hide(currentDiv);
     // await sleep(1000)
 
     // set text
     const quoteText = currentDiv.children[0];
     const authorText = currentDiv.children[1];
-    quoteText.innerText = quote.text;
-    authorText.innerText = quote.author;
+    // quoteText.innerText = quote.text;
+    // authorText.innerText = quote.author;
 
 
     // place a single div
@@ -107,9 +107,11 @@ async function placeQuoteDiv(index, quote) {
 
         // check that this div doesn't overlap with a different one
         overlap = checkOverlap(currentDiv, allQuoteDivs);
-        // console.log('overlap', overlap);
+        console.log('overlap', overlap, 'hidden', currentDiv.classList.contains('hidden'));
     }
     show(currentDiv);
+    const timeout = randomNumber(3000, 5000);
+    setTimeout(() => hide(currentDiv), timeout);
 }
 
 function removeAllDivs() {
