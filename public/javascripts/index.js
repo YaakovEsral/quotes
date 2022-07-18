@@ -29,14 +29,16 @@ async function animate() {
     // before starting anything. sometimes while loop malfunctions without this
     await sleep(1000);
 
+    // start a sequence of transitions
     const numberOfTransitions = randomNumber(3, 5, true);
-    for (let i = 0; i <= allQuoteDivs.length; i++) {
-        // start over if it's the last one
-        // if(i === numberOfTransitions) {
-        //     const interval = randomNumber(2000, 4000);
-        //     setTimeout(animate, interval);
-        // }
+    for (let i = 1; i <= numberOfTransitions; i++) {
+        // start a new sequence if it's the last transition
+        if(i === numberOfTransitions) {
+            const interval = randomNumber(2000, 4000);
+            setTimeout(animate, interval);
+        }
 
+        // get a quote, place it, and increment the div counter
         if (animationActive) {
             const quote = getQuoteText();
             placeQuoteDiv(divIndex, quote);
@@ -44,8 +46,8 @@ async function animate() {
             if(divIndex === allQuoteDivs.length) {
                 divIndex = 0;
             }
-            // after placing quote
-            // await sleep(200);
+            // pause between quote transitions
+            await sleep(200);
         } else {
             console.log('ending animation');
             break;
@@ -55,11 +57,13 @@ async function animate() {
 }
 
 function getQuoteText() {
+    // refill array if it's empty
     if(!quotesSelectionArray.length) {
         quotesSelectionArray = [...originalQuotesArray];
         // console.log('refilling array');
     }
 
+    // pick a random quote from the unused array
     const index = randomNumber(0, quotesSelectionArray.length, true);
     // console.log(index, quotesSelectionArray);
     return quotesSelectionArray.splice(index, 1)[0];
@@ -70,31 +74,32 @@ async function placeQuoteDiv(index, quote) {
     let counter = 0;
     const currentDiv = allQuoteDivs[index];
     // hide(currentDiv);
+    // await sleep(1000)
+
     // set text
     const quoteText = currentDiv.children[0];
     const authorText = currentDiv.children[1];
     quoteText.innerText = quote.text;
     authorText.innerText = quote.author;
 
-    await sleep(200)
 
     // place a single div
     while (overlap) {
         if (counter++ > 1000) {
             console.log('COUNTER OVERLOAD');
-            removeAllDivs();
+            // removeAllDivs();
             break;
         }
         console.log('searching for available space');
-        // get dimensions of each div
+        // get dimensions of current div
         const props = getProperties(currentDiv);
 
-        // calculate a random spot for divs based on screen size and div dimensions
+        // calculate a random spot for div based on screen size and div dimensions
         // (this should ensure they are not positioned off the screen in any direction)
         const left = randomNumber(0, window.innerWidth - props.width);
         const top = randomNumber(0, window.innerHeight - props.height);
 
-
+        // place the div
         currentDiv.style.left = `${left}px`;
         currentDiv.style.top = `${top}px`;
         // used this for testing - each new placement attempt
@@ -103,8 +108,6 @@ async function placeQuoteDiv(index, quote) {
         // check that this div doesn't overlap with a different one
         overlap = checkOverlap(currentDiv, allQuoteDivs);
         // console.log('overlap', overlap);
-
-        
     }
     show(currentDiv);
 }
