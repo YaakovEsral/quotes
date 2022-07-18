@@ -28,17 +28,22 @@ div#quotes-display:fullscreen {
 
 #main-quote {
     /* background-color: rgb(130, 130, 235); */
-    font-size: 25px;
-    font-family: 'Barlow-ExtraBold';
+    font-size: 80px;
+    font-family: 'Barlow-ExtraBold' !important;
 }
 
 div.secondary-quote {
     font-size: 20px;
     opacity: 0.3;
-    font-family: 'Barlow-SemiBold';
+    font-family: 'Barlow-Light';
+}
+
+div.quote-text {
+    text-align: center;
 }
 
 div.author-text {
+    text-align: right;
     font-size: 0.625em;
 }
 

@@ -32,7 +32,7 @@ async function animate() {
     await sleep(1000);
 
     // start a sequence of transitions
-    const numberOfTransitions = randomNumber(3, 5, true);
+    const numberOfTransitions = randomNumber(4, 6, true);
     for (let i = 1; i <= numberOfTransitions; i++) {
         // start a new sequence if it's the last transition
         if(i === numberOfTransitions) {
@@ -82,15 +82,25 @@ async function placeQuoteDiv(index, quote) {
     const quoteText = currentDiv.children[0];
     const authorText = currentDiv.children[1];
     quoteText.innerText = quote.text;
-    authorText.innerText = quote.author;
+    authorText.innerText = `- ${quote.author}`;
+
+    // set font weight
+    const fontIndex = randomNumber(0, fonts.length, true);
+    currentDiv.style.fontFamily = fonts[fontIndex];
+
+    // set font size
+    if(window.innerWidth > 800 && currentDiv !== get('main-quote')) {
+        const fontSize = randomNumber(20, 50);
+        currentDiv.style.fontSize = `${fontSize}px`;
+    }
 
 
     // place a single div
     while (overlap) {
         if (counter++ > 1000) {
             console.log('COUNTER OVERLOAD');
-            removeAllDivs();
-            break;
+            removeDivs();
+            // break;
         }
         // console.log('searching for available space');
         // get dimensions of current div
@@ -116,7 +126,7 @@ async function placeQuoteDiv(index, quote) {
     setTimeout(() => hide(currentDiv), timeout);
 }
 
-function removeAllDivs() {
+function removeDivs() {
     console.log('removing divs');
     allQuoteDivs.forEach(div => {
         div.style.left = '-100%';
