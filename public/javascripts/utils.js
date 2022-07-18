@@ -10,6 +10,14 @@ function hide(elem) {
     elem.classList.add('hidden');
 }
 
+function remove(elem) {
+    elem.classList.add('removed');
+}
+
+function replace(elem) {
+    elem.classList.remove('removed');
+}
+
 function toggleDarkMode(elem) {
     if(elem.classList.contains('dark-mode')) {
         elem.classList.remove('dark-mode');
