@@ -28,4 +28,9 @@ router.get('/quotes', async (req, res, next) => {
     }
 })
 
+router.post('/submit-quote', async (req, res, next) => {
+    console.log(req.body);
+    res.end();
+})
+
 module.exports = router;
