@@ -6,6 +6,8 @@ let quotesSelectionArray = [];
 init();
 async function init() {
     originalQuotesArray = await fetchQuotes();
+    if(window.innerWidth < 800)
+        get('main-quote').style.fontSize = (window.innerWidth / 22) + 'px';
 }
 
 // function to toggle full screen
@@ -79,18 +81,18 @@ async function placeQuoteDiv(index, quote) {
     // set text
     const quoteText = currentDiv.children[0];
     const authorText = currentDiv.children[1];
-    // quoteText.innerText = quote.text;
-    // authorText.innerText = quote.author;
+    quoteText.innerText = quote.text;
+    authorText.innerText = quote.author;
 
 
     // place a single div
     while (overlap) {
         if (counter++ > 1000) {
             console.log('COUNTER OVERLOAD');
-            // removeAllDivs();
+            removeAllDivs();
             break;
         }
-        console.log('searching for available space');
+        // console.log('searching for available space');
         // get dimensions of current div
         const props = getProperties(currentDiv);
 
@@ -107,7 +109,7 @@ async function placeQuoteDiv(index, quote) {
 
         // check that this div doesn't overlap with a different one
         overlap = checkOverlap(currentDiv, allQuoteDivs);
-        console.log('overlap', overlap, 'hidden', currentDiv.classList.contains('hidden'));
+        // console.log('overlap', overlap, 'hidden', currentDiv.classList.contains('hidden'));
     }
     show(currentDiv);
     const timeout = randomNumber(3000, 5000);
