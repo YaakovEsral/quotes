@@ -2,6 +2,7 @@ document.addEventListener('click', toggleFullScreen)
 let animationActive = false;
 let originalQuotesArray = [];
 let quotesSelectionArray = [];
+let marginOffset = 100e;
 
 init();
 async function init() {
@@ -108,8 +109,8 @@ async function placeQuoteDiv(index, quote) {
 
         // calculate a random spot for div based on screen size and div dimensions
         // (this should ensure they are not positioned off the screen in any direction)
-        const left = randomNumber(0, window.innerWidth - props.width);
-        const top = randomNumber(0, window.innerHeight - props.height);
+        const left = randomNumber(marginOffset, window.innerWidth - props.width -marginOffset);
+        const top = randomNumber(marginOffset, window.innerHeight - props.height - marginOffset);
 
         // place the div
         currentDiv.style.left = `${left}px`;
@@ -122,7 +123,7 @@ async function placeQuoteDiv(index, quote) {
         // console.log('overlap', overlap, 'hidden', currentDiv.classList.contains('hidden'));
     }
     show(currentDiv);
-    const timeout = randomNumber(3000, 5000);
+    const timeout = randomNumber(5000, 6000);
     setTimeout(() => hide(currentDiv), timeout);
 }
 
