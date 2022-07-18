@@ -1,4 +1,8 @@
-document.addEventListener('click', toggleFullScreen)
+document.addEventListener('click', (e) => {
+    if (!e.path.includes(get('quotes-form'))) {
+        toggleFullScreen()
+    }
+})
 var animationActive = false;
 let originalQuotesArray = [];
 let quotesSelectionArray = [];
@@ -9,7 +13,7 @@ const darkModeInterval = 210000; // 3 1/2 minutes
 let mainQuoteInterval;
 const mainQuoteMinInterval = 6000, mainQuoteMaxInterval = 8000;
 
-setInterval(() => console.log(currentlyDisplayedDivs), 2000);
+// setInterval(() => console.log(currentlyDisplayedDivs), 2000);
 
 init();
 async function init() {
@@ -127,7 +131,7 @@ async function placeQuoteDiv(div, quote) {
 
         if (counter++ > 1000) {
             console.log('COUNTER OVERLOAD');
-            if(currentDiv === mainQuoteDiv) {
+            if (currentDiv === mainQuoteDiv) {
                 removeDivs();
                 counter = 0;
             } else {
