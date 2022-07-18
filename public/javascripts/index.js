@@ -2,7 +2,7 @@ document.addEventListener('click', toggleFullScreen)
 let animationActive = false;
 let originalQuotesArray = [];
 let quotesSelectionArray = [];
-let marginOffset = 100e;
+let marginOffset = 100;
 
 init();
 async function init() {
