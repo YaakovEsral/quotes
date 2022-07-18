@@ -3,6 +3,7 @@ let animationActive = false;
 let originalQuotesArray = [];
 let quotesSelectionArray = [];
 let marginOffset = 100;
+const minimumSequenceInterval = 5000, maximumSequenceInterval = 6000;
 
 init();
 async function init() {
@@ -20,6 +21,7 @@ function toggleFullScreen() {
         quotesDisplay.requestFullscreen();
         animationActive = true;
         animate();
+        setInterval(() => toggleDarkMode(quotesDisplay), 25000)
     }
     else {
         animationActive = false;
@@ -37,7 +39,7 @@ async function animate() {
     for (let i = 1; i <= numberOfTransitions; i++) {
         // start a new sequence if it's the last transition
         if(i === numberOfTransitions) {
-            const interval = randomNumber(2000, 4000);
+            const interval = randomNumber(minimumSequenceInterval, maximumSequenceInterval);
             setTimeout(animate, interval);
         }
 
@@ -50,7 +52,7 @@ async function animate() {
                 divIndex = 0;
             }
             // pause between quote transitions
-            await sleep(200);
+            await sleep(400);
         } else {
             console.log('ending animation');
             break;
@@ -76,7 +78,7 @@ async function placeQuoteDiv(index, quote) {
     let overlap = true;
     let counter = 0;
     const currentDiv = allQuoteDivs[index];
-    hide(currentDiv);
+    // hide(currentDiv);
     // await sleep(1000)
 
     // set text
@@ -98,10 +100,19 @@ async function placeQuoteDiv(index, quote) {
 
     // place a single div
     while (overlap) {
+        if(!animationActive) {
+            console.log('ending');
+            break;
+        }
+
         if (counter++ > 1000) {
             console.log('COUNTER OVERLOAD');
-            removeDivs();
+            // removeDivs();
             // break;
+            // console.log(Date.now());
+            await sleep(3000); // can change this to minimumSequenceInterval (5000), but may not be necessary
+            // console.log(Date.now());
+            continue;
         }
         // console.log('searching for available space');
         // get dimensions of current div
@@ -123,7 +134,7 @@ async function placeQuoteDiv(index, quote) {
         // console.log('overlap', overlap, 'hidden', currentDiv.classList.contains('hidden'));
     }
     show(currentDiv);
-    const timeout = randomNumber(5000, 6000);
+    const timeout = randomNumber(minimumSequenceInterval, maximumSequenceInterval);
     setTimeout(() => hide(currentDiv), timeout);
 }
 

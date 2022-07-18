@@ -14,6 +14,12 @@ div#quotes-display:not(:fullscreen) {
 div#quotes-display:fullscreen {
     background-color: #ffc843;
     position: relative;
+    transition: .5s background-color;
+}
+
+div#quotes-display:fullscreen.dark-mode {
+    background-color: black;
+    
 }
 
 .single-quote {
@@ -40,11 +46,21 @@ div.secondary-quote {
 
 div.quote-text {
     text-align: center;
+    transition: .5s color;
+}
+
+div#quotes-display.dark-mode div.quote-text{
+    color:#ffc843;
 }
 
 div.author-text {
     text-align: right;
     font-size: 0.625em;
+    transition: .5s color;
+}
+
+div#quotes-display.dark-mode div.author-text{
+    color: white;
 }
 
 /* #a {

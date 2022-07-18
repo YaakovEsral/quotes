@@ -10,6 +10,15 @@ function hide(elem) {
     elem.classList.add('hidden');
 }
 
+function toggleDarkMode(elem) {
+    if(elem.classList.contains('dark-mode')) {
+        elem.classList.remove('dark-mode');
+    }
+    else {
+        elem.classList.add('dark-mode');
+    }
+}
+
 function randomNumber(min, max, floor) {
     const range = max - min;
     let num = Math.random() * range;

@@ -72,8 +72,9 @@ function checkOverlap(div, allQuoteDivs) {
 
             // console.log(div.id, div2.id, topLeft1, topLeft2, topRight1, topRight2, bottomLeft1, bottomLeft2, bottomRight1, bottomRight2);
 
-        // return if any are true (i.e. if any are overlapping)
-        return (topLeft1 || topLeft2 || topRight1 || topRight2 || bottomLeft1 || bottomLeft2 || bottomRight1 || bottomRight2) && (!div2.classList.contains('hidden'));
+        // return if any are true (i.e. if any are overlapping) and the div is showing
+        const showing = !div2.classList.contains('hidden')
+        return (topLeft1 || topLeft2 || topRight1 || topRight2 || bottomLeft1 || bottomLeft2 || bottomRight1 || bottomRight2) && (showing);
     });
 
     return overlap;
