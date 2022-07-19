@@ -120,7 +120,8 @@ div.secondary-quote {
 }
 
 div.quote-text {
-    text-align: center;
+    /* text-align: center; */
+    text-align: left;
     transition: .5s color;
 }
 
@@ -134,7 +135,7 @@ div.author-text {
     transition: .5s color;
 }
 
-div#quotes-display.dark-mode div.author-text{
+/* div#quotes-display.dark-mode  */div.author-text{
     color: white;
 }
 
