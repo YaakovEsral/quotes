@@ -81,7 +81,7 @@ div#container:fullscreen #quotes-display {
     top: 0;
 }
 
-div#quotes-display:fullscreen.dark-mode {
+div#quotes-display.dark-mode {
     background-color: black;
 }
 

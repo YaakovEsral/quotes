@@ -4,8 +4,8 @@ document.addEventListener('click', (e) => {
     }
 })
 var animationActive = false;
-let originalQuotesArray = [];
-let quotesSelectionArray = [];
+var originalQuotesArray = [];
+var quotesSelectionArray = [];
 var recentQuotesArray = [];
 let currentlyDisplayedDivs = [];
 let marginOffset = 100;
@@ -40,6 +40,8 @@ function toggleFullScreen() {
     else {
         animationActive = false;
         document.exitFullscreen();
+        videoDisplay.pause();
+        videoDisplay.src = '';
     }
 }
 

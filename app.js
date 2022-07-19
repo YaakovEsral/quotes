@@ -22,9 +22,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+const { ObjectId } = require('mongodb');
 let mongoDB;
 let quotesCollection;
-(async() => {
+(async () => {
     mongoDB = require('./mongoConnection');
     // console.log(mongoDB);
     try {
@@ -32,7 +33,7 @@ let quotesCollection;
         await mongoDB.connectToServer();
         quotesCollection = await mongoDB.getCollection();
     }
-    catch(err) {
+    catch (err) {
         console.error(err);
     }
 })()
@@ -60,12 +61,25 @@ app.use(function (err, req, res, next) {
 app.io.on('connection', function (socket) {
     // console.log('a user connected');
 
-    socket.on('quote-message', async (quote) => {
+    socket.on('quote-submit', async (quote) => {
         // console.log(quote);
         console.log(quote.text, quote.author)
         await quotesCollection.insertOne(quote);
-        app.io.emit('notification', {status: 'success', quote});
+        app.io.emit('notification', { status: 'success', quote });
     });
+
+    socket.on('quote-delete', async (id) => {
+        // const mongoDB = require('../mongoConnection');
+        // await mongoDB.connectToServer();
+        console.log('deleting a quote', id);
+        const objId = new ObjectId(id);
+        const status = await quotesCollection.deleteOne({ _id: objId });
+        console.log(status);
+        if (status.deletedCount === 1) {
+            return socket.emit('quote-delete-status', {status: 'success', id})
+        }
+        socket.emit('quote-delete-status', {status: 'failure'})
+    })
 });
 
 module.exports = app;

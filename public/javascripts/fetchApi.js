@@ -38,16 +38,17 @@ async function fetchQuotes() {
 // }
 
 async function fetchDeleteQuote(id) {
+    let response;
     try {
-        const response = await fetch(`/delete-quote/${id}`, {
+        response = await fetch(`/delete-quote/${id}`, {
             method: 'delete',
         });
 
         if(!response.ok) {
-            throw new Error(`${response.status} - ${message || response.statusText}`)
+            throw new Error(`${response.status} - ${response.statusText}`)
         }
-        const data = await response.text();
-        return data;
+        // console.log(response);
+        return response;
     }
     catch(err) {
         console.error(err);

@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-const {ObjectId} = require('mongodb');
 // quick start: https://www.mongodb.com/docs/drivers/node/current/quick-start/
 
 
@@ -24,14 +23,17 @@ router.get('/quotes', async (req, res, next) => {
     res.json(quotesArray);
 })
 
-router.delete('/delete-quote/:id', async (req, res, next) => {
-    console.log(req.params);
-    const mongoDB = require('../mongoConnection');
-    await mongoDB.connectToServer();
-    console.log('deleting a quote', req.params.id);
-    const id = new ObjectId(req.params.id);
-    const status = await mongoDB.getCollection().deleteOne({_id: id});
-    console.log(status);
-    res.end('foo')
-})
+// router.delete('/delete-quote/:id', async (req, res, next) => {
+//     console.log(req.params);
+//     const mongoDB = require('../mongoConnection');
+//     await mongoDB.connectToServer();
+//     console.log('deleting a quote', req.params.id);
+//     const id = new ObjectId(req.params.id);
+//     const status = await mongoDB.getCollection().deleteOne({ _id: id });
+//     console.log(status);
+//     if (status.deletedCount === 1) {
+//         return res.end()
+//     }
+//     return res.status(500).end()
+// })
 module.exports = router;
