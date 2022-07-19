@@ -11,9 +11,10 @@ router.get('/', function (req, res, next) {
 router.get('/quotes', async (req, res, next) => {
 
     const mongoDB = require('../mongoConnection');
+    await mongoDB.connectToServer();
     const quotesArray = await mongoDB.getCollection().find().toArray();
 
-    // console.log(quotesArray);
+    // console.log('quotes', quotesArray);
     res.json(quotesArray);
 })
 

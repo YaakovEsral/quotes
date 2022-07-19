@@ -55,17 +55,18 @@ div#submit-failure {
     border-color: rgb(219, 55, 26);
 }
 
-/* div#container:not(:fullscreen) #quotes-display,
-div#container:not(:fullscreen) #video-display {
-    display: none;
-} */
+div#container:fullscreen {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
 
-div#quotes-display:not(:fullscreen) {
+div#container:not(:fullscreen) #quotes-display,
+div#container:not(:fullscreen) #video-display {
     display: none;
 }
 
-
-div#quotes-display:fullscreen {
+div#container:fullscreen #quotes-display {
     background-color: #ffc843;
     position: absolute;
     transition: .5s background-color;
@@ -78,10 +79,10 @@ div#quotes-display:fullscreen.dark-mode {
     background-color: black;
 }
 
-/* div#container:fullscreen video#video-display {
+div#container:fullscreen video#video-display {
     height: 100%;
     width: 100%;
-} */
+}
 
 .single-quote {
     /* height: 200px;

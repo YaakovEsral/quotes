@@ -1,5 +1,5 @@
 document.addEventListener('click', (e) => {
-    if (!e.path.includes(get('quotes-form'))) {
+    if (!form.contains(e.target)) {
         toggleFullScreen()
     }
 })
@@ -15,12 +15,15 @@ let mainQuoteInterval;
 const mainQuoteMinInterval = 6000, mainQuoteMaxInterval = 8000;
 
 // setInterval(() => console.log(currentlyDisplayedDivs), 2000);
+// setInterval(() => console.log(quotesSelectionArray), 2000);
 
 init();
 async function init() {
     originalQuotesArray = await fetchQuotes();
     if (window.innerWidth < 800)
         mainQuoteDiv.style.fontSize = (window.innerWidth / 22) + 'px';
+
+    addVideoListeners();
 }
 
 // function to toggle full screen
@@ -30,9 +33,9 @@ function toggleFullScreen() {
         !document.msFullScreenElement &&
         !document.webkitFullScreenElement) {
 
-        quotesDisplay.requestFullscreen();
+        container.requestFullscreen();
         startQuotesAnimation();
-        // setInterval(playVideo, 20000);
+        setTimeout(playVideo, videoInterval);
     }
     else {
         animationActive = false;
