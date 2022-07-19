@@ -76,7 +76,7 @@ app.io.on('connection', function (socket) {
         const status = await quotesCollection.deleteOne({ _id: objId });
         console.log(status);
         if (status.deletedCount === 1) {
-            return socket.emit('quote-delete-status', {status: 'success', id})
+            return app.io.emit('quote-delete-status', {status: 'success', id})
         }
         socket.emit('quote-delete-status', {status: 'failure'})
     })

@@ -30,7 +30,7 @@ quotesListContainer.addEventListener('click', e => {
     // }
 // }
 
-window.socket.on('quote-delete-status', (msg) => {
+socket.on('quote-delete-status', (msg) => {
     if (msg.status === 'success') {
         console.log('successfully deleted', msg.id);
         const quoteListItems = Array.from(document.querySelectorAll('.quote-li'));

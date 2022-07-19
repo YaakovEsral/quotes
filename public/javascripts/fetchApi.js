@@ -37,21 +37,21 @@ async function fetchQuotes() {
 //     }
 // }
 
-async function fetchDeleteQuote(id) {
-    let response;
-    try {
-        response = await fetch(`/delete-quote/${id}`, {
-            method: 'delete',
-        });
+// async function fetchDeleteQuote(id) {
+//     let response;
+//     try {
+//         response = await fetch(`/delete-quote/${id}`, {
+//             method: 'delete',
+//         });
 
-        if(!response.ok) {
-            throw new Error(`${response.status} - ${response.statusText}`)
-        }
-        // console.log(response);
-        return response;
-    }
-    catch(err) {
-        console.error(err);
-        return err;
-    }
-}
+//         if(!response.ok) {
+//             throw new Error(`${response.status} - ${response.statusText}`)
+//         }
+//         // console.log(response);
+//         return response;
+//     }
+//     catch(err) {
+//         console.error(err);
+//         return err;
+//     }
+// }
