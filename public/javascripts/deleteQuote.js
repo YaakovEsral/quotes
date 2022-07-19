@@ -10,24 +10,24 @@ quotesListContainer.addEventListener('click', e => {
 
 // async function deleteQuote(containerElem, id) {
 
-    
 
-    // // console.log('attempting to delete quote', id);
-    // const response = await fetchDeleteQuote(id);
-    // if (response.status === 200) {
-    //     // remove div from dom
-    //     containerElem.remove();
 
-    //     // remove from originalQuotesArray
-    //     const originalQuotesIndex = originalQuotesArray.findIndex(quote => quote._id === id);
-    //     console.log(originalQuotesArray, originalQuotesIndex);
-    //     originalQuotesArray.splice(originalQuotesIndex, 1);
+// // console.log('attempting to delete quote', id);
+// const response = await fetchDeleteQuote(id);
+// if (response.status === 200) {
+//     // remove div from dom
+//     containerElem.remove();
 
-    //     // remove from quotesSelectionArray
-    //     const selectionQuotesIndex = quotesSelectionArray.findIndex(quote => quote._id === id);
-    //     // console.log(selectionQuotesIndex, quotesSelectionArray);
-    //     quotesSelectionArray.splice(selectionQuotesIndex, 1);
-    // }
+//     // remove from originalQuotesArray
+//     const originalQuotesIndex = originalQuotesArray.findIndex(quote => quote._id === id);
+//     console.log(originalQuotesArray, originalQuotesIndex);
+//     originalQuotesArray.splice(originalQuotesIndex, 1);
+
+//     // remove from quotesSelectionArray
+//     const selectionQuotesIndex = quotesSelectionArray.findIndex(quote => quote._id === id);
+//     // console.log(selectionQuotesIndex, quotesSelectionArray);
+//     quotesSelectionArray.splice(selectionQuotesIndex, 1);
+// }
 // }
 
 socket.on('quote-delete-status', (msg) => {
@@ -48,5 +48,10 @@ socket.on('quote-delete-status', (msg) => {
         const selectionQuotesIndex = quotesSelectionArray.findIndex(quote => quote._id === msg.id);
         // console.log(selectionQuotesIndex, quotesSelectionArray);
         quotesSelectionArray.splice(selectionQuotesIndex, 1);
+
+        // remove from recentQuotesArray
+        const recentQuotesIndex = recentQuotesArray.findIndex(quote => quote._id === msg.id);
+        // console.log(recentQuotesIndex, recentQuotesArray);
+        recentQuotesArray.splice(recentQuotesIndex, 1);
     }
 })

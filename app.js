@@ -69,8 +69,6 @@ app.io.on('connection', function (socket) {
     });
 
     socket.on('quote-delete', async (id) => {
-        // const mongoDB = require('../mongoConnection');
-        // await mongoDB.connectToServer();
         console.log('deleting a quote', id);
         const objId = new ObjectId(id);
         const status = await quotesCollection.deleteOne({ _id: objId });
