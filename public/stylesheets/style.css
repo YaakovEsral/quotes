@@ -74,9 +74,9 @@ div#quotes-display:fullscreen {
     top: 0;
 }
 
-/* div#quotes-display:fullscreen.dark-mode {
+div#quotes-display:fullscreen.dark-mode {
     background-color: black;
-} */
+}
 
 /* div#container:fullscreen video#video-display {
     height: 100%;
