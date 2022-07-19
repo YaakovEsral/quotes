@@ -4,7 +4,7 @@ quotesListContainer.addEventListener('click', e => {
     // if target was delete button
     if (e.target.classList.contains('quote-li-delete')) {
         // deleteQuote(e.target.parentElement, e.target.dataset.id)
-        window.socket.emit('quote-delete', id)
+        window.socket.emit('quote-delete', e.target.dataset.id)
     }
 })
 
@@ -40,12 +40,12 @@ window.socket.on('quote-delete-status', (msg) => {
         quoteListItems[index].remove();
 
         // remove from originalQuotesArray
-        const originalQuotesIndex = originalQuotesArray.findIndex(quote => quote._id === id);
-        console.log(originalQuotesArray, originalQuotesIndex);
+        const originalQuotesIndex = originalQuotesArray.findIndex(quote => quote._id === msg.id);
+        // console.log(originalQuotesArray, originalQuotesIndex);
         originalQuotesArray.splice(originalQuotesIndex, 1);
 
         // remove from quotesSelectionArray
-        const selectionQuotesIndex = quotesSelectionArray.findIndex(quote => quote._id === id);
+        const selectionQuotesIndex = quotesSelectionArray.findIndex(quote => quote._id === msg.id);
         // console.log(selectionQuotesIndex, quotesSelectionArray);
         quotesSelectionArray.splice(selectionQuotesIndex, 1);
     }
