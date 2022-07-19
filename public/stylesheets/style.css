@@ -42,6 +42,7 @@ div.submit-response {
     border: 1px solid;
     border-radius: 5px;
     padding: 5px;
+    transition: 0.3s;
 }
 
 div#submit-success {

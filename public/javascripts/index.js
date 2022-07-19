@@ -6,6 +6,7 @@ document.addEventListener('click', (e) => {
 var animationActive = false;
 let originalQuotesArray = [];
 let quotesSelectionArray = [];
+var recentQuotesArray = [];
 let currentlyDisplayedDivs = [];
 let marginOffset = 100;
 const minimumSequenceInterval = 5000, maximumSequenceInterval = 15000;
@@ -70,7 +71,7 @@ async function animate(main) {
         }
 
         // get a quote, place it, and increment the div counter
-        const quote = getQuoteText();
+        const quote = getQuoteText(main);
         placeQuoteDiv(main || divIndex, quote);
         if (!main) {
             divIndex++;
@@ -85,11 +86,15 @@ async function animate(main) {
 
 }
 
-function getQuoteText() {
+function getQuoteText(main) {
     // refill array if it's empty
     if (!quotesSelectionArray.length) {
         quotesSelectionArray = [...originalQuotesArray];
         // console.log('refilling array');
+    }
+    
+    if(recentQuotesArray.length && main) {
+        return recentQuotesArray.shift()
     }
 
     // pick a random quote from the unused array

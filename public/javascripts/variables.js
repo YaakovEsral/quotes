@@ -1,3 +1,9 @@
+const form = get('quotes-form');
+const quoteInput = get('quote-input');
+const authorInput = get('author-input');
+const submitSuccessMessage = get('submit-success');
+const submitFailureMessage = get('submit-failure');
+
 const container = get('container');
 var quotesDisplay = get('quotes-display');
 var videoDisplay = get('video-display');
