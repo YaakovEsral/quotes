@@ -109,6 +109,7 @@ div#main-quote {
 
 div#main-quote div.quote-text {
     line-height: 95%;
+    margin-bottom: 10px;
 }
 
 div.secondary-quote {

@@ -4,8 +4,8 @@ block content
     h1 Quotes App
 
     form#quotes-form
-        textarea#quote-input(name="", cols="30", rows="10" placeholder="Enter your quote...")
-        input#author-input(type="text" placeholder="Enter name of quotee...")
+        textarea#quote-input(name="", cols="30", rows="10" placeholder="Enter your quote..." required)
+        input#author-input(type="text" placeholder="Enter name of quotee..." required)
         button#quote-submit Submit Quote 
 
         .submit-response#submit-failure.hidden Sorry, your quote cannot be submitted at this time.
