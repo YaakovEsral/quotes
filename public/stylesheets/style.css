@@ -75,7 +75,7 @@ div#container:not(:fullscreen) #video-display {
     display: none;
 }
 
-div#container:fullscreen #quotes-display {
+div#quotes-display {
     background-color: #ffc843;
     transition: .5s background-color;
     top: 0;
@@ -99,11 +99,16 @@ video#video-display.hidden {
     font-family: 'Barlow-Regular', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-#main-quote {
+div#main-quote {
     /* background-color: rgb(130, 130, 235); */
     font-size: 60px;
     font-family: 'Barlow-ExtraBold' !important;
     max-width: 50vw;
+    /* line-height: 1; */
+}
+
+div#main-quote div.quote-text {
+    line-height: 95%;
 }
 
 div.secondary-quote {
