@@ -11,7 +11,7 @@ const mainQuoteDiv = get('main-quote');
 const secondaryQuoteDivs = Array.from(document.querySelectorAll('.secondary-quote'));
 const allQuoteDivs = Array.from(document.querySelectorAll('.single-quote'));
 const videoInterval = 30000;
-const videoArray = ['1_way_too_expensive.mp4', 'vid1.mp4', 'vid2.mp4', 'vid3.mp4'];
+const videoArray = ['cheap_quality.mp4', 'confusing.mp4', 'expensive.mp4', 'just_like_everyone_else.mp4', 'rude_on_the_phone.mp4', 'slow_service.mp4', 'useless.mp4', 'waste_of_time.mp4', 'way_too_expensive.mp4'];
 let videoIndex = 0;
 
 const quotesListContainer = get('quotes-list-container');
