@@ -68,13 +68,10 @@ block content
     
         video#video-display.hidden(src="" autoplay)
 
-
-    - console.log('QUOTES', quotes)
-
     div#quotes-list-container 
         each quote in quotes
             div.quote-li 
-                div.quote-li-text
-                div.quote-li-author
-                button.quote-li-delete
+                h3.quote-li-text=quote.text
+                div.quote-li-author=quote.author
+                button.quote-li-delete(data-id=quote._id) Delete This Quote
 

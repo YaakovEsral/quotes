@@ -17,12 +17,30 @@ async function fetchQuotes() {
     }
 }
 
-async function submitQuote(quote) {
+// async function submitQuote(quote) {
+//     try {
+//         const response = await fetch('/submit-quote', {
+//             method: 'post',
+//             headers: {'Content-Type': 'application/json'},
+//             body: JSON.stringify(quote)
+//         });
+
+//         if(!response.ok) {
+//             throw new Error(`${response.status} - ${message || response.statusText}`)
+//         }
+//         const data = await response.text();
+//         return data;
+//     }
+//     catch(err) {
+//         console.error(err);
+//         return err;
+//     }
+// }
+
+async function fetchDeleteQuote(id) {
     try {
-        const response = await fetch('/submit-quote', {
-            method: 'post',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(quote)
+        const response = await fetch(`/delete-quote/${id}`, {
+            method: 'delete',
         });
 
         if(!response.ok) {

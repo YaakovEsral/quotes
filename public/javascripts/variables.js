@@ -14,6 +14,9 @@ const videoInterval = 4000;
 const videoArray = ['1_way_too_expensive.mp4', 'vid1.mp4', 'vid2.mp4', 'vid3.mp4'];
 let videoIndex = 0;
 
+const quotesListContainer = get('quotes-list-container');
+const deleteButtons = Array.from(document.querySelectorAll('.quote-li-delete'));
+
 const fonts = ['Barlow-Light', 'Barlow-Medium', 'Barlow-Regular', 'Barlow-ExtraLight', 'Barlow-Thin']
 
 // const fonts = ['Barlow-Bold', 'Barlow-ExtraBold', 'Barlow-ExtraLight', 'Barlow-Light', 'Barlow-Medium', 'Barlow-Regular', 'Barlow-SemiBold', 'Barlow-Thin']

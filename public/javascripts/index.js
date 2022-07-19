@@ -1,5 +1,5 @@
 document.addEventListener('click', (e) => {
-    if (!form.contains(e.target)) {
+    if (!form.contains(e.target) && (!quotesListContainer.contains(e.target))) {
         toggleFullScreen()
     }
 })

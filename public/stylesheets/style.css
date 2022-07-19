@@ -156,6 +156,31 @@ div#quotes-display.dark-mode div.author-text{
     background-color: rgb(123, 253, 214);
 } */
 
+div#quotes-list-container {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+}
+
+div.quote-li {
+    
+    margin-bottom: 10px;
+    background-color: rgb(203, 238, 250);
+    border-radius: 5px;
+    padding: 6px;
+    max-width: 500px;
+}
+
+button.quote-li-delete {
+    font-size: 16px;
+    padding: 4px;
+}
+
+div.quote-li * {
+    margin-bottom: 10px;
+}
+
 .hidden {
     opacity: 0 !important;
 }
