@@ -19,7 +19,7 @@ socket.on('notification', (msg) => {
 
         // add quote to quote list container
         const html = `
-        <div class="quote-li"> 
+        <div class="quote-li" data-id=${msg.quote._id}> 
             <h3 class="quote-li-text">${msg.quote.text}</h3>
             <div class="quote-li-author">${msg.quote.author}</div>
             <button class="quote-li-delete" data-id=${msg.quote._id}>Delete This Quote</button>
