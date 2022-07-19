@@ -7,10 +7,11 @@ function playVideo() {
 
 function addVideoListeners() {
     let time = 1;
-    setInterval(() => console.log(time++, 'seconds'), 1000)
+    // setInterval(() => console.log(time++, 'seconds'), 1000)
 
     videoDisplay.addEventListener('canplay', () => {
-        remove(quotesDisplay);
+        show(videoDisplay);
+        hide(quotesDisplay)
         animationActive = false;
         videoDisplay.play();
 
@@ -18,7 +19,8 @@ function addVideoListeners() {
     })
 
     videoDisplay.addEventListener('ended', () => {
-        replace(quotesDisplay);
+        show(quotesDisplay);
+        hide(videoDisplay);
         videoDisplay.src = '';
         animationActive = true;
         animate(true);

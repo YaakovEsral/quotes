@@ -10,7 +10,7 @@ var videoDisplay = get('video-display');
 const mainQuoteDiv = get('main-quote');
 const secondaryQuoteDivs = Array.from(document.querySelectorAll('.secondary-quote'));
 const allQuoteDivs = Array.from(document.querySelectorAll('.single-quote'));
-const videoInterval = 7000;
+const videoInterval = 4000;
 const videoArray = ['1_way_too_expensive.mp4', 'vid1.mp4', 'vid2.mp4', 'vid3.mp4'];
 let videoIndex = 0;
 
