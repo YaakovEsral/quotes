@@ -135,7 +135,7 @@ div.author-text {
     transition: .5s color;
 }
 
-/* div#quotes-display.dark-mode  */div.author-text{
+div#quotes-display.dark-mode div.author-text{
     color: white;
 }
 
