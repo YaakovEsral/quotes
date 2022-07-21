@@ -191,7 +191,3 @@ div.quote-li * {
 .hidden {
     opacity: 0 !important;
 }
-
-.removed {
-    display: none !important;
-}
